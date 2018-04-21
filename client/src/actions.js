@@ -1,10 +1,7 @@
 export const ADD_MESSAGE = 'add-message';
 export const ADD_RESPONSE = 'add-response';
 
-export const addMessage = (message) => {
-  return { type: ADD_MESSAGE, message };
-}
+export const addMessage = message => ({ type: ADD_MESSAGE, message });
 
-export const addResponse = (message) => {
-  return { type: ADD_RESPONSE, message };
-}
+export const addResponse = message => ({ type: ADD_RESPONSE, message });
+

@@ -10,25 +10,24 @@ app.get('/api/boards/1', (req, res) => {
 });
 
 // Starts the server.
-server.listen(5000, function () {
+server.listen(5000, () => {
   console.log('Starting server on port 5000');
 });
 
 // Add the WebSocket handlers
-io.on('connection', function (socket) {
-  console.log('Connected!!')
+io.on('connection', (socket) => {
+  console.log('Connected!!');
 
-  socket.on('message', function (data) {
-    console.log(`Recieved the message: ${data}`)
-    io.sockets.emit('message', `Server Recieved the message: ${data}`);
-  })
+  socket.on('message', (data) => {
+    console.log(`Received the message: ${data}`);
+    io.sockets.emit('message', `Server Received the message: ${data}`);
+  });
 });
 
 // Used to continuously push data to all sockets
-setInterval(function () {
+setInterval(() => {
   io.sockets.emit('message', 'hi from server!!');
-}, 1000*5);
-
+}, 1000 * 5);
 
 
 // // Possibly used for managing multiple connections
@@ -69,4 +68,4 @@ setInterval(function () {
  */
 
 
- // HOW TO COMMUNICATE AND EMIT EVENT TO JUST 1 CLIENT
+// HOW TO COMMUNICATE AND EMIT EVENT TO JUST 1 CLIENT

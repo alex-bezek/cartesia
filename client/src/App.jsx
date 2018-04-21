@@ -8,8 +8,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Chat />
-      {
+        <Chat />
+        {
         /**
          * Do the sign in workflow https://www.youtube.com/watch?v=ZoviAuHZ6IQ
          *

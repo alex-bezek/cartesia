@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { createLogger } from 'redux-logger';
+import { createLogger } from 'redux-logger'; // eslint-disable-line import/no-extraneous-dependencies
 
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import startChat, {chatMiddleware} from './chat';
+import startChat, { chatMiddleware } from './chat';
 import rootReducer from './reducers';
 
-/* eslint-disable no-underscore-dangle */
-export const reduxDevTools = () => (
+
+const reduxDevTools = () => (
+  // eslint-disable-next-line no-underscore-dangle
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 );
 
@@ -32,9 +33,11 @@ const store = createStore(
 );
 startChat(store);
 
-ReactDOM.render(
+const Provided = () => (
   <Provider store={store}>
     <App />
-  </Provider>, document.getElementById('root')
+  </Provider>
 );
+
+ReactDOM.render(<Provided />, document.getElementById('root'));
 registerServiceWorker();

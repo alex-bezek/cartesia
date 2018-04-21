@@ -1,14 +1,14 @@
 import React from 'react';
 
 class Chat extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     setInterval(() => {
       this.props.onSubmit(undefined, 'Hi From Client');
     }, 1000 * 3);
   }
 
-  render(){
+  render() {
     const { messages, onSubmit } = this.props;
     return (
       <div>
@@ -18,7 +18,7 @@ class Chat extends React.Component {
           ))
         }
       </div>
-    )
+    );
   }
 }
 
