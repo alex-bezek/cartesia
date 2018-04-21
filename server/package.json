@@ -1,0 +1,19 @@
+{
+  "name": "cartersia-server",
+  "version": "1.0.0",
+  "description": "Backend web socket server for catersia",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "author": "Alex Bezek",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1"
+  }
+}
