@@ -4,23 +4,39 @@ import Chat from './chat';
 
 const mapStateToProps = state => ({
   gameState: state.gameState,
+  players: state.players,
+  sessionId: state.sessionId,
 });
 
-const showMode = (gameState) => {
+const showMode = (gameState, players, sessionId) => {
   switch (gameState) {
     case 'LOBBY':
-      return <Chat />
+      return <Chat />;
     case 'SETUP':
-      return (<h1>Setup Phase</h1>)
+      return (
+        <div>
+          <h1>Setup Phase</h1>
+          <h3>All Players</h3>
+          {players.map(player => (
+            <div>
+              <span>{player.name}</span>
+              <br />
+              <span>{player.queen}</span>
+            </div>
+          ))}
+          <h3>You Are</h3>
+          <div>{sessionId}</div>
+        </div>
+      );
     default:
-      return (<h1>Game Play Time!</h1>)
-    }
-}
+      return (<h1>Game Play Time!</h1>);
+  }
+};
 
-const App = ({ gameState }) => (
+const App = ({ gameState, players, sessionId }) => (
   <div className="App">
     {
-      showMode(gameState)
+      showMode(gameState, players, sessionId)
       /**
        * Do the sign in workflow https://www.youtube.com/watch?v=ZoviAuHZ6IQ
        *

@@ -1,11 +1,11 @@
 const R = require('ramda');
-const { isPlayerEqual } = require('./player');
-
-const MAX_PLAYERS = 2;
+const { isPlayerEqual, assignQueens } = require('./player');
+const { MAX_PLAYERS } = require('./constants');
 
 const createWorld = (io) => {
   const world = {
     players: [],
+    phase: 'LOBBY',
   };
 
   const emitToOnePlayer = (action, data, player) => {
@@ -17,6 +17,11 @@ const createWorld = (io) => {
     R.forEach(curriedEmitToOnePlayer(action, data), world.players);
   };
 
+  const syncPublicDataToClient = () => {
+    emitToAllPlayers('PLAYERS_CHANGED', world.players);
+    emitToAllPlayers('SET_GAME_STATE', world.phase);
+  };
+
 
   const isFull = () => world.players.length === MAX_PLAYERS;
   const rejectPlayer = (player) => {
@@ -24,21 +29,28 @@ const createWorld = (io) => {
     console.log('GAME_FULL');
   };
 
+  const enterSetupPhase = () => {
+    world.phase = 'SETUP';
+    world.players = assignQueens(world.players);
+    syncPublicDataToClient();
+  };
+
+
   return ({
     addPlayer(player) {
       if (isFull()) {
         rejectPlayer(player);
       } else {
         world.players = R.append(player, world.players);
-        emitToAllPlayers('PLAYERS_CHANGED', world.players);
+        syncPublicDataToClient();
       }
-      if (world.players.length === MAX_PLAYERS) {
-        emitToAllPlayers('SET_GAME_STATE', 'SETUP');
+      if (world.players.length === MAX_PLAYERS && world.phase === 'LOBBY') {
+        enterSetupPhase();
       }
     },
     removePlayer(player) {
       world.players = R.reject(isPlayerEqual(player), world.players);
-      emitToAllPlayers('PLAYERS_CHANGED', world.players);
+      syncPublicDataToClient();
     },
   });
 };
