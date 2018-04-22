@@ -9,9 +9,16 @@ class Chat extends React.Component {
   }
 
   render() {
-    const { messages, onSubmit } = this.props;
+    const { messages, players } = this.props;
     return (
       <div>
+        <h1>Players</h1>
+        {
+          players.map(player => (
+            <p>{player.name}</p>
+          ))
+        }
+        <h3>Messages</h3>
         {
           messages.map(message => (
             <p>{message}</p>

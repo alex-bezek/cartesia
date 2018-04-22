@@ -4,6 +4,7 @@ import Chat from '../components/chat';
 
 const mapStateToProps = state => ({
   messages: state.messages,
+  players: state.players,
 });
 
 const mapDispatchToProps = dispatch => ({
