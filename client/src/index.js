@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger'; // eslint-disable-line import/no-extraneous-dependencies
-import * as R from 'ramda';
 
 import App from './containers/App';
-import registerServiceWorker from './registerServiceWorker';
+import * as serviceWorker from './serviceWorker';
 import listen, { socketMiddleware } from './socket.io';
 import rootReducer from './reducers';
 
@@ -18,7 +17,7 @@ const reduxDevTools = () => (
 
 const buildMiddlewares = () => {
   const middleware = process.env.NODE_ENV !== 'production' ? [createLogger()] : [];
-  return R.append(socketMiddleware, middleware);
+  return [...middleware, socketMiddleware];
 };
 
 // From online guide
@@ -37,4 +36,7 @@ const Provided = () => (
 );
 
 ReactDOM.render(<Provided />, document.getElementById('root'));
-registerServiceWorker();
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();
