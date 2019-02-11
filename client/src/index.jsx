@@ -4,7 +4,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { createLogger } from 'redux-logger'; // eslint-disable-line import/no-extraneous-dependencies
 
-import App from './containers/App';
+import App from './pages/App';
+import Routes from './routes';
 import * as serviceWorker from './serviceWorker';
 import listen, { socketMiddleware } from './socket.io';
 import rootReducer from './reducers';
@@ -31,7 +32,9 @@ listen(store);
 
 const Provided = () => (
   <Provider store={store}>
-    <App />
+    <Routes>
+      <App />
+    </Routes>
   </Provider>
 );
 

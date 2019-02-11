@@ -2,7 +2,7 @@ import io from 'socket.io-client';
 // import {} from './actions';
 
 // TODO: Make this come from config/process.env
-const socket = io.connect('http://localhost:5000');
+export const socket = io.connect('http://localhost:5000');
 
 export default (store) => {
   socket.on('connect', () => {
