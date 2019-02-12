@@ -4,6 +4,39 @@ A board game my fiance made. The pain points of playing with a board is that you
 
 The initial goal of this project is to handle that via a web app. The long term goal is to make this the entire game.
 
+## Local Dev
+
+The code is mostly split into 2 directories, `client` and `server`. The client has its own whole node ecosystem (package.json, Dotfiles, etc) whereas the ones for the server are at the root level. All needed yarn commands are able to be hit by the root level package.json
+
+##### Requirements
+
+* Nvm - https://github.com/creationix/nvm#install-script
+* Node@10.15.1 - run `nvm use`
+* yarn - `npm install -g yarn`
+
+##### Setup and Run
+
+* `yarn setup` - yarn installs the server and client.
+* `yard start` - uses concurrently to run the node server and create react app frontend on separate ports.
+
+##### Additional Commands
+
+* `yarn client` - Starts just the client.
+* `yarn server` - Starts just the server.
+* ` yarn lint` - Runs eslint across both the client and server.
+  * `yarn lint:client` - Runs eslint on just the client code.
+  * `yarn lint:server` - Runs eslint on just the server code.
+* `yarn test` - Runs jest tests across both he client and server.
+  * `yarn test:client` - Runs jest tests across just the client code.
+  * `yarn test:server` - Runs jest tests across just the server code.
+  * `yarn test:server:watch` - Starts the jest watch tool over server test suite.
+
+### Deployment
+TODO
+
+### CI
+TODO
+
 ## Architecture
 
 The application is split into 2 separate pieces. A react frontend made with create-react-app, and a nodeJS backend exposing a rest interface and a socket.io server.
