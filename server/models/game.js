@@ -4,7 +4,11 @@ const MAX_PLAYER_COUNT = 8;
 
 /*
   A model for structuring game data and providing read only access. Used
-  to do calculations, and to get different filered views of the game.
+  to do calculations, and to get different filtered views of the game.
+  Favors immutability. Whenever we get an instance of this data, its not
+  the source of truth, so we could get race conditions if we operate
+  on this model in memory, and then attempt to persist the whole thing
+  back to the db. It may have been changed by another request between read and write.
 */
 class Game {
   // Constructs a game object from the data passed in, or creates a new one

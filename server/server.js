@@ -15,6 +15,8 @@ app.set('port', 5000);
 
 // Starts the server.
 server.listen(5000, () => {
+  // TODO: Create a logger object to use in place of console.log
+  // eslint-disable-next-line no-console
   console.log('Starting server on port 5000');
 });
 

@@ -2,7 +2,7 @@ const GameRespository = require('../repositories/game');
 
 /*
   This module is a set of functions that would be the core of different
-  event handlers. They recieve data parameters, and respond with an
+  event handlers. They receive data parameters, and respond with an
   action and data format. This will likely be split up per domain
   and eventually if we use lambdas, would be 1 per file
 */

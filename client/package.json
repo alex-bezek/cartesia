@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "js-cookie": "^2.2.0",
+    "prop-types": "^15.7.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",

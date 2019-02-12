@@ -1,10 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { AUTH_COOKIE_NAME, GAME_SELECT_PATH } from '../constants';
 
-class Login extends React.Component {
+const propTypes = {
+  history: PropTypes.shape({}).isRequired,
+};
 
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = { username: '' };
@@ -33,7 +37,7 @@ class Login extends React.Component {
       <div>
         <h1>Login Page</h1>
         <form onSubmit={this.handleSubmit}>
-          <label>
+          <label htmlFor="username">
             Username:
             <input
               id="username"
@@ -51,4 +55,5 @@ class Login extends React.Component {
   }
 }
 
+Login.propTypes = propTypes;
 export default withRouter(Login);

@@ -6812,7 +6812,7 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.1:
   version "15.7.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.1.tgz#2fa61e0a699d428b40320127733ee2931f05d9d1"
   dependencies:

@@ -1,6 +1,6 @@
-const handlers = require('../handlers/index.js');
-const Player = require('../models/player');
-const GameRespository = require('../repositories/game');
+const handlers = require('../index.js');
+const Player = require('../../models/player');
+const GameRespository = require('../../repositories/game');
 
 const playerFactory = () => new Player({
   id: 123,

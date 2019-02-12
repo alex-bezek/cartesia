@@ -2,7 +2,9 @@ const db = require('./db');
 const Game = require('../models/game');
 /*
   A set of functions that handle interacting with the database
-  to return Game object instances orr update data.
+  to return Game object instances orr update data. Favors using
+  the Game class as an object other than raw JSON other than when
+  writing to the DB.
 */
 
 // Returns a game object for each game in the db

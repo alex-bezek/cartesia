@@ -4,6 +4,8 @@ import io from 'socket.io-client';
 // TODO: Make this come from config/process.env
 export const socket = io.connect('http://localhost:5000');
 
+// TODO: Remove this once we implement an actual action that uses the store.dispatch
+// eslint-disable-next-line no-unused-vars
 export default (store) => {
   socket.on('connect', () => {
     // store.dispatch(setSessionId(socket.id));

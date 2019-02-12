@@ -53,6 +53,8 @@ const openSockets = (io) => {
   });
 };
 
+// Un-used code for reference later if needed. Clean up at some point
+//
 // io.sockets.connected[player.socketId].emit(action, data);
 // // Used to continuously push data to all sockets
 // setInterval(() => {
