@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
+  // TODO: Game Owner is an object right now. Need the backend to either return just the name, or we destructure client side
   gameOwner: PropTypes.string.isRequired,
   numPlayersInLobby: PropTypes.number.isRequired,
   maxLobbySize: PropTypes.number.isRequired,

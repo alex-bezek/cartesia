@@ -12,7 +12,6 @@ export default (store) => {
   });
 
   socket.on('UPDATE_GAME_LIST', (data) => {
-    console.log(data.gameList)
     store.dispatch(actionCreators.updateGameList(data.gameList));
   });
 };
