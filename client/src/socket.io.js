@@ -25,7 +25,6 @@ export const socketMiddleware = store => next => (action) => {
   const { type, ...data } = action;
   if (type === actions.CREATE_GAME) {
     socket.emit('CREATE_GAME', { ...data });
-    // socket.emit('CREATE_GAME', { test: 'test' });
   }
   return result;
 };

@@ -17,13 +17,13 @@ const GameListItem = ({
   maxLobbySize,
   onJoinClick,
 }) => (
-    <div>
-      <div>{`ID: ${id}`}</div>
-      <div>{`Owner: ${gameOwner}`}</div>
-      <div>{`Player Count: ${numPlayersInLobby}/${maxLobbySize}`}</div>
-      <button type="button" onClick={() => onJoinClick(id)} disabled={numPlayersInLobby >= maxLobbySize}>Join</button>
-    </div>
-  );
+  <div>
+    <div>{`ID: ${id}`}</div>
+    <div>{`Owner: ${gameOwner}`}</div>
+    <div>{`Player Count: ${numPlayersInLobby}/${maxLobbySize}`}</div>
+    <button type="button" onClick={() => onJoinClick(id)} disabled={numPlayersInLobby >= maxLobbySize}>Join</button>
+  </div>
+);
 
 GameListItem.propTypes = propTypes;
 export default GameListItem;

@@ -8,17 +8,9 @@ const setAuthCookie = (username) => {
   Cookies.set(AUTH_COOKIE_NAME, JSON.stringify(json));
 };
 
-const getAuthCookie = () => JSON.parse(Cookies.get(AUTH_COOKIE_NAME));
-
-const getAuthCookieID = () => {
-  const cookie = getAuthCookie();
-  return cookie && cookie.id;
-};
-
-const getAuthCookieUserName = () => {
-  const cookie = getAuthCookie();
-  return cookie && cookie.username;
-};
+const getAuthCookie = () => JSON.parse(Cookies.get(AUTH_COOKIE_NAME)) || {};
+const getAuthCookieID = () => getAuthCookie().id;
+const getAuthCookieUserName = () => getAuthCookie().username;
 
 export {
   setAuthCookie,

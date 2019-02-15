@@ -1,7 +1,7 @@
 import { actions } from './actions';
 
 const initialSate = {
-  gameList: []
+  gameList: [],
 };
 
 const rootReducer = (state = initialSate, action) => {

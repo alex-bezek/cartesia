@@ -9,7 +9,6 @@ app.set('port', 5000);
 
 // For testing purposes
 app.get('/api/games', (req, res) => {
-  console.log(handler.getGameList());
   res.send(handler.getGameList());
 });
 
