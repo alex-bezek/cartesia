@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import { AUTH_COOKIE_NAME, GAME_SELECT_PATH } from '../constants';
+import { setAuthCookie } from '../utils/authCookie';
+import { GAME_SELECT_PATH } from '../constants';
 
 const propTypes = {
   history: PropTypes.shape({}).isRequired,
@@ -26,7 +26,7 @@ class Login extends React.Component {
     const { history } = this.props;
     event.preventDefault();
     if (username) {
-      Cookies.set(AUTH_COOKIE_NAME, username);
+      setAuthCookie(username);
       history.push(GAME_SELECT_PATH);
     }
   }

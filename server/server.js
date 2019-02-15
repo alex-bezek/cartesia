@@ -3,15 +3,15 @@ const app = require('express')();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const openSockets = require('./openSockets');
+const handler = require('./handlers/index');
 
 app.set('port', 5000);
 
-/* Example of rest api endpoiont
-
- app.get('/api/boards/1', (req, res) => {
-   res.send(board);
-)};
-*/
+// For testing purposes
+app.get('/api/games', (req, res) => {
+  console.log(handler.getGameList());
+  res.send(handler.getGameList());
+});
 
 // Starts the server.
 server.listen(5000, () => {

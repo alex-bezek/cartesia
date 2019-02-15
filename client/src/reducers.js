@@ -1,11 +1,13 @@
-// import { } from './actions';
+import { actions } from './actions';
 
-const initialSate = {};
+const initialSate = {
+  gameList: []
+};
 
 const rootReducer = (state = initialSate, action) => {
   switch (action.type) {
-    case 'TMP-ACTION-TYPE':
-      return { ...state, tmp: 'tmp' };
+    case actions.UPDATE_GAME_LIST:
+      return { gameList: action.gameList };
     default:
       return state;
   }

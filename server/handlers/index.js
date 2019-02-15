@@ -9,7 +9,7 @@ const GameRespository = require('../repositories/game');
 
 // Each of the action types our handlers emit
 const actions = {
-  UPDATE_GAME_LIST: 'UPDATET_GAME_LIST',
+  UPDATE_GAME_LIST: 'UPDATE_GAME_LIST',
   UPDATE_LOBBY_DATA: 'UPDATE_LOBBY_DATA',
 };
 
