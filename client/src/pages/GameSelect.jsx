@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import GameListItem from '../components/GameListItem';
 
 const propTypes = {
-  gameList: PropTypes.arrayOf(PropTypes.shape({})),
+  gameList: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  })),
   onJoinClick: PropTypes.func.isRequired,
   onCreateGame: PropTypes.func.isRequired,
 };

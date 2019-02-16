@@ -11,7 +11,7 @@ export default (store) => {
     // store.dispatch(setSessionId(socket.id));
   });
 
-  socket.on('UPDATE_GAME_LIST', (data) => {
+  socket.on(actions.UPDATE_GAME_LIST, (data) => {
     store.dispatch(actionCreators.updateGameList(data.gameList));
   });
 };
@@ -24,7 +24,7 @@ export const socketMiddleware = store => next => (action) => {
   if (!socket) { return result; }
   const { type, ...data } = action;
   if (type === actions.CREATE_GAME) {
-    socket.emit('CREATE_GAME', { ...data });
+    socket.emit(actions.CREATE_GAME, { ...data });
   }
   return result;
 };
