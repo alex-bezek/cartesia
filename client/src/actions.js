@@ -6,14 +6,22 @@ const actions = {
   UPDATE_GAME_LIST: 'UPDATE_GAME_LIST',
 };
 
+const userData = () => ({
+  id: getAuthCookieID(),
+  username: getAuthCookieUserName(),
+});
+
 const actionCreators = {
   // Client Side Invoked Actions
   createGame: () => ({
     type: actions.CREATE_GAME,
-    id: getAuthCookieID(),
-    username: getAuthCookieUserName(),
+    ...userData(),
   }),
-  joinGame: gameID => ({ type: actions.JOIN_GAME, gameID }),
+  joinGame: gameID => ({
+    type: actions.JOIN_GAME,
+    gameID,
+    ...userData(),
+  }),
 
   // Socket action creators
   updateGameList: gameList => ({ type: actions.UPDATE_GAME_LIST, gameList }),

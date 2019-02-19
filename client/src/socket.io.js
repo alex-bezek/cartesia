@@ -23,8 +23,11 @@ export const socketMiddleware = store => next => (action) => {
   const result = next(action);
   if (!socket) { return result; }
   const { type, ...data } = action;
-  if (type === actions.CREATE_GAME) {
-    socket.emit(actions.CREATE_GAME, { ...data });
-  }
+  const supportedActions = [
+    actions.CREATE_GAME,
+    actions.JOIN_GAME,
+  ];
+
+  if (supportedActions.includes(type)) { socket.emit(type, { ...data }); }
   return result;
 };

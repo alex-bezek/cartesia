@@ -24,6 +24,11 @@ const socketToPlayer = (socket, data) => new Player({
 const openSockets = (io) => {
   // Add the WebSocket handlers
   io.sockets.on('connection', (socket) => {
+    // Upon connecting, send the player the current game list
+    socket.emit(
+      handlers.actions.UPDATE_GAME_LIST,
+      { gameList: handlers.getGameList() },
+    );
     // TODO: Manage Players Connecting and Leaving
     // world.addPlayer(toPlayer(socket.id));
     // socket.on('disconnect', () => {
@@ -46,7 +51,10 @@ const openSockets = (io) => {
       // TODO: Maybe move this up, but not sure if it re-evaluates
       const player = socketToPlayer(socket, socketData);
       const { action, data } = handlers.joinGame(socketData.gameID, player);
-      data.gameLobby.players.foreach((lobbyPlayer) => {
+      if (action === handlers.ERROR) {
+        socket.emit(action, data);
+      }
+      data.gameLobby.players.forEach((lobbyPlayer) => {
         io.to(lobbyPlayer.socketID).emit(action, data);
       });
     });
