@@ -14,14 +14,16 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "redux": "^4.0.1",
-    "socket.io-client": "^2.2.0"
+    "socket.io-client": "^2.2.0",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx . --ignore-path .eslintignore",
+    "lint:fix": "eslint --fix --ext .js,.jsx . --ignore-path .eslintignore",
     "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom"
+    "test": "echo Not Implemented yet || CI=true react-scripts test --env=jsdom"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",

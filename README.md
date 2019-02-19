@@ -26,6 +26,9 @@ The code is mostly split into 2 directories, `client` and `server`. The client h
 * ` yarn lint` - Runs eslint across both the client and server.
   * `yarn lint:client` - Runs eslint on just the client code.
   * `yarn lint:server` - Runs eslint on just the server code.
+* ` yarn lint:fix` - Runs eslint fix across both the client and server.
+  * `yarn lint:fix:client` - Runs eslint fix on just the client code.
+  * `yarn lint:fix:server` - Runs eslint fix on just the server code.
 * `yarn test` - Runs jest tests across both he client and server.
   * `yarn test:client` - Runs jest tests across just the client code.
   * `yarn test:server` - Runs jest tests across just the server code.
