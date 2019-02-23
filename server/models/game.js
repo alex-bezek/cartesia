@@ -30,7 +30,11 @@ class Game {
   get playerCount() { return Object.keys(this.players).length; }
 
   get isFull() {
-    return !!this.playerCount() === MAX_PLAYER_COUNT;
+    return !!(this.playerCount >= MAX_PLAYER_COUNT);
+  }
+
+  isPlayerInGame(player) {
+    return this.players.find(joinedPlayer => joinedPlayer.id === player.id) !== undefined;
   }
 
   // TODO: These views should probably be another class

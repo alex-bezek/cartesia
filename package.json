@@ -4,6 +4,7 @@
   "description": "Cartersia web app and server",
   "scripts": {
     "client": "cd client && yarn start",
+    "ci": "yarn lint && yarn test",
     "coverage": "yarn coverage:client && yarn coverage:server",
     "coverage:client": "jest --collectCoverageFrom=./client/src/**.js --coverage",
     "coverage:server": "jest --collectCoverageFrom=./server/src/**.js --coverage",
@@ -35,6 +36,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jest": "^22.2.2",
+    "faker": "^4.1.0",
     "jest": "23.6.0",
     "nodemon": "^1.18.9"
   }

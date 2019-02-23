@@ -11,6 +11,7 @@ const GameRespository = require('../repositories/game');
 const actions = {
   UPDATE_GAME_LIST: 'UPDATE_GAME_LIST',
   UPDATE_LOBBY_DATA: 'UPDATE_LOBBY_DATA',
+  ERROR: 'ERROR',
 };
 
 // Retrieve a list of all games for the main menu
@@ -40,9 +41,18 @@ const createGame = (player) => {
 // adds the player to the specified game, and returns an
 // action object with that game lobbies data
 const joinGame = (gameID, player) => {
-  GameRespository.addPlayerToGame(gameID, player);
+  const success = GameRespository.addPlayerToGame(gameID, player);
+  if (!success) {
+    return {
+      action: actions.ERROR,
+      data: {
+        errorMessage: `Failed to add player of id ${player.id} to game of id ${gameID}`,
+      },
+    };
+  }
   const game = GameRespository.find(gameID);
   return {
+    // TODO: We need to push the game list state to the UI as well so the player counts increment
     action: actions.UPDATE_LOBBY_DATA,
     data: {
       gameLobby: game.toLobbyView(),

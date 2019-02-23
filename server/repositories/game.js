@@ -28,11 +28,14 @@ const create = (player) => {
 };
 
 // Finds the game with the id specified, and adds the player to the player list
+// Returns true or false if the player was added successfully.
 const addPlayerToGame = (gameID, player) => {
   const game = find(gameID);
-  if (game) {
+  if (game && !game.isFull && !game.isPlayerInGame(player)) {
     update(game.id, { players: [...game.players, player] });
+    return true;
   }
+  return false;
 };
 
 // Clears out the db games array. Used for testing
