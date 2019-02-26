@@ -45,6 +45,7 @@ class Game {
       numPlayersInLobby: this.playerCount,
       maxLobbySize: MAX_PLAYER_COUNT,
       gameOwner: this.gameOwner,
+      players: this.players,
     };
   }
 

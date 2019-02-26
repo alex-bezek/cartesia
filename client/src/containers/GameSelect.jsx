@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import GameSelect from '../pages/GameSelect';
 import { actionCreators } from '../actions';
+import { selectGamesWithOwnerName } from '../reducers';
 
 const mapStateToProps = state => ({
-  gameList: state.gameList,
+  gameList: selectGamesWithOwnerName(state),
 });
 
 const mapDispatchToProps = dispatch => ({
