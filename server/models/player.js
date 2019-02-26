@@ -9,6 +9,7 @@ class Player {
     this.id = json.id;
     this.username = json.username;
     this.socketID = json.socketID;
+    this.team = json.team;
   }
 
   toJSON() {
@@ -16,6 +17,7 @@ class Player {
       id: this.id,
       username: this.username,
       socketID: this.socketID,
+      team: this.team,
     };
   }
 }

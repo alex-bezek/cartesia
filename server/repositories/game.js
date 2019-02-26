@@ -35,6 +35,18 @@ const addPlayerToGame = (gameID, player) => {
   }
 };
 
+const startGame = (gameID) => {
+  const game = find(gameID);
+  const teams = [1, 2, 3, 4];
+  const players = game.players;
+  const shuffledPlayers = shuffleArray(players);
+  const playersWithTeams = shuffledPlayers.map((player, index) => (
+    new Player(...player.toJSON()))
+  )
+}
+
+const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);
+
 // Clears out the db games array. Used for testing
 const reset = () => { db.games = []; };
 
